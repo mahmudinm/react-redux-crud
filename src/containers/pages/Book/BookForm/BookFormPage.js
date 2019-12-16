@@ -25,6 +25,7 @@ class BookFormPage extends Component {
 			this.props.updateBooks(data, id)
 				.then((res) => {
 					console.log(res)
+					this.props.history.push('/books');
 				}, (err) => {
 					console.log(err.response)
 				})
@@ -32,6 +33,7 @@ class BookFormPage extends Component {
 			this.props.createBooks(data)
 				.then((res) => {
 					console.log(res)
+					this.props.history.push('/books');
 				}, (err) => {
 					console.log(err.response)
 				})

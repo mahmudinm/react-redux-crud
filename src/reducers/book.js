@@ -19,16 +19,21 @@ const book = (state = initialState, action = {}) => {
 		case 'CREATE_BOOK':
 			return {
 				...state,
+				data: [...state.data, action.value],
 				book: {}
 			}
 		case 'UPDATE_BOOK':
+			const book = action.value
 			return {
 				...state,
+				data: state.data.map(item => item.id === book.id ? book : item ),
 				book: {}
 			}
 		case 'DELETE_BOOK':
+			console.log(action.value);
 			return {
-				...state
+				...state,
+				data: state.data.filter(item => item.id !== parseInt(action.value))
 			}
 		default: return state
 	}

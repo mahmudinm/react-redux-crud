@@ -36,8 +36,8 @@ class BookListPage extends Component {
 										Buku {item.name}
 										<br/>
 										<hr/>
-										<Link to={`/books/${item.id}/edit`} className="btn btn-sm btn-primary float-right">EDIT</Link>
-										<a onClick={() => this.handleDelete(item.id)} className="btn btn-sm btn-danger float-right">DELETE</a>
+										<Link to={`/books/${item.id}/edit`} className="btn btn-sm btn-primary">EDIT</Link> &nbsp;
+										<button onClick={() => this.handleDelete(item.id)} className="btn btn-sm btn-danger">DELETE</button>
 									</div>
 									<div className="card-body">
 										Author {item.author} <br/>

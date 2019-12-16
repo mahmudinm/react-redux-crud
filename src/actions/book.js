@@ -34,7 +34,7 @@ export const createBooksAPI = (data) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
 		instance.post('book', data)
 			.then((res) => {
-				dispatch({type: 'CREATE_BOOK'})
+				dispatch({type: 'CREATE_BOOK', value: data})
 				console.log(res);
 				resolve(res)
 			}, (err) => {
@@ -49,7 +49,7 @@ export const updateBooksAPI = (data, id) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
 		instance.post(`book/${id}`, data)
 			.then((res) => {
-				dispatch({type: 'UPDATE_BOOK'})
+				dispatch({type: 'UPDATE_BOOK', value: data, id: id})
 				console.log(res);
 				resolve(res)
 			}, (err) => {
@@ -61,10 +61,14 @@ export const updateBooksAPI = (data, id) => (dispatch) => {
 }
 
 export const deleteBooksAPI = (id) => (dispatch) => {
+	// dilakukan tanpa async atau langsung tanpa axios / tanpa jeda
+	dispatch({type: 'DELETE_BOOK', value: id})
+
 	const promise = new Promise((resolve, reject) => {
 		instance.post(`book/${id}`, { _method: 'DELETE' })
 			.then((res) => {
-				dispatch({type: 'DELETE_BOOK'})
+				// dilakukan dengan async dan ada loading atau jeda ketika delete
+				// dispatch({type: 'DELETE_BOOK', value: id})
 				console.log(res);
 				resolve(res)
 			}, (err) => {
