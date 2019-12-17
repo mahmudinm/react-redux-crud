@@ -16,7 +16,6 @@ class BookListPage extends Component {
 
 	render() {
 
-
 		const loading = (
 			<div className="row mt-3">
 				<p>Loading...</p>
@@ -25,7 +24,7 @@ class BookListPage extends Component {
 
 		const books = ( 
 			<div className="row mt-3">
-				{this.props.book.data.map((item, key) => 
+				{this.props.books.map((item, key) => 
 					<div className="col-md-4" key={item.id}>
 						<div className="card">
 							<div className="card-header">
@@ -36,8 +35,8 @@ class BookListPage extends Component {
 								<button onClick={() => this.handleDelete(item.id)} className="btn btn-sm btn-danger">DELETE</button>
 							</div>
 							<div className="card-body">
-								Author {item.author} <br/>
-								Category {item.category}
+								Author : {item.author.first_name} <br/>
+								Category : {item.category}
 							</div>
 						</div>
 						<br/>
@@ -54,7 +53,7 @@ class BookListPage extends Component {
 					<Link to="/books/create" className="btn btn-primary">CREATE NEW BOOK</Link>
 					<div className="clearfix"></div>
 
-					{ this.props.book.data.length > 0 ? books : loading }
+					{ this.props.books.length > 0 ? books : loading }
 
 				</div>
 			</Fragment>
@@ -63,7 +62,7 @@ class BookListPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	book: state.book
+	books: state.book.books
 })
 
 const mapDispatchToProps = (dispatch) => ({

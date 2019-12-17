@@ -8,7 +8,7 @@ const validate = (values) => {
   if (!values.name) {
     errors.name = 'Name Required'
   }
-  if (!values.author) {
+  if (!values.author_id) {
     errors.author = 'Author Required'
   }    
   if (!values.category) {
@@ -28,15 +28,6 @@ class BookForm extends Component {
 		}
 	}
 
-
-	renderField = ({ input, label, type, meta: { touched, error } }) => (
-	    <div className="form-group">
-	      <label>{label}</label>
-	      <input {...input} placeholder={label} type={type} className="form-control"/>
-	      {touched && error && <span className="invalid-feedback">{error}</span>}
-	    </div>
-	)
-
 	render(){
 		const {handleSubmit} = this.props
 		return (
@@ -47,15 +38,24 @@ class BookForm extends Component {
 						   label="Name"
 						   type="input" 
 						   component={ReduxForm} />
-						   {/*component={ReduxForm} />*/}
 				</div>
 				<div className="form-group">
-					<Field name="author" 
+{/*					<Field name="author" 
 						   placeholder="Book Author"
 						   label="Author"
 						   type="input" 
-						   component={ReduxForm} />
-						   {/*component={ReduxForm} />								*/}
+						   component={ReduxForm} />*/}
+					<label htmlFor="author_id">Author</label>
+			        <Field 
+			        	name="author_id" 
+			        	id="author_id" 
+			        	component="select"
+			        	className="form-control">
+			    		<option value="">Select Author</option>
+					    {this.props.authors.map((item, key) => 
+				    		<option value={item.id} key={key}>{item.first_name} {item.last_name}</option>
+					    )}
+				    </Field>
 				</div>
 				<div className="form-group">
 					<Field name="category" 
@@ -63,7 +63,6 @@ class BookForm extends Component {
 						   label="Category"
 						   type="input" 
 						   component={ReduxForm} />
-						   {/*component={ReduxForm} />								*/}
 				</div>
 				<input type="submit" value={this.props.book.id ? "UPDATE" : "CREATE" } className="btn btn-sm btn-block btn-primary"/>
 			</form>		

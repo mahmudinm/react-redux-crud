@@ -26,6 +26,8 @@ class AuthorForm extends Component {
 	componentWillReceiveProps = (nextProps) => {
 		const { author } = nextProps
 		// ngeload form hanya sekali
+		console.log('author.id', author.id);
+		console.log('this.props', this.props.author.id);
 		if (author.id !== this.props.author.id) {
 			this.props.initialize(author)
 		}

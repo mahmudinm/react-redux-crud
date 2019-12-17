@@ -1,6 +1,7 @@
 const initialState = {
-	data: [],
-	book: {}
+	books: [],
+	book: {},
+	authors: []
 }
 
 const book = (state = initialState, action = {}) => {
@@ -9,31 +10,39 @@ const book = (state = initialState, action = {}) => {
 			return {
 				...state,
 				book: {},
-				data: action.value,
-			}
-		case 'FIND_BOOK':
-			return {
-				...state,
-				book: action.value,
+				books: action.value,
 			}
 		case 'CREATE_BOOK':
 			return {
 				...state,
-				data: [...state.data, action.value],
+				authors: action.value
+			}
+		case 'STORE_BOOK':
+			return {
+				...state,
+				authors: [...state.books, action.value],
 				book: {}
+			}
+		case 'EDIT_BOOK':
+			return {
+				...state,
+				book: action.value,
+				authors: action.authors
 			}
 		case 'UPDATE_BOOK':
 			const book = action.value
 			return {
 				...state,
-				data: state.data.map(item => item.id === book.id ? book : item ),
+				// tidak bisa di gunakan ketika ada relasi data /
+				// karena tidak bisa mengambil relasi data yang ingin di ambil
+				// books: state.books.map(item => item.id === book.id ? book : item ),
 				book: {}
 			}
 		case 'DELETE_BOOK':
 			console.log(action.value);
 			return {
 				...state,
-				data: state.data.filter(item => item.id !== parseInt(action.value))
+				books: state.books.filter(item => item.id !== parseInt(action.value))
 			}
 		default: return state
 	}

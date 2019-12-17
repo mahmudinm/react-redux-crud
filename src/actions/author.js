@@ -15,11 +15,11 @@ export const getAuthorsAPI = (data) => (dispatch) => {
 	return promise;
 }
 
-export const editAuthorsAPI = (id) => (dispatch) => {
+export const storeAuthorsAPI = (data) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
-		instance.get(`author/${id}/edit`)
+		instance.post('author', data)
 			.then((res) => {
-				dispatch({type: 'FIND_AUTHOR', value: res.data})
+				dispatch({type: 'STORE_AUTHOR', value: data})
 				console.log(res);
 				resolve(res)
 			}, (err) => {
@@ -30,11 +30,11 @@ export const editAuthorsAPI = (id) => (dispatch) => {
 	return promise;
 }
 
-export const storeAuthorsAPI = (data) => (dispatch) => {
+export const editAuthorsAPI = (id) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
-		instance.post('author', data)
+		instance.get(`author/${id}/edit`)
 			.then((res) => {
-				dispatch({type: 'STORE_AUTHOR', value: data})
+				dispatch({type: 'FIND_AUTHOR', value: res.data})
 				console.log(res);
 				resolve(res)
 			}, (err) => {
