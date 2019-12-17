@@ -1,21 +1,20 @@
 import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getBooksAPI, deleteBooksAPI } from '../../../actions/book'
+import { getAuthorsAPI, deleteAuthorsAPI } from '../../../actions/author'
 
-class BookListPage extends Component {
+class AuthorListPage extends Component {
 
 	componentDidMount() {
-		this.props.getBooks()
+		this.props.getAuthors()
 	}
 
 	handleDelete = (id) => {
 		console.log(id)
-		this.props.deleteBooks(id)
+		this.props.deleteAuthors(id)
 	}
 
 	render() {
-
 
 		const loading = (
 			<div className="row mt-3">
@@ -23,21 +22,21 @@ class BookListPage extends Component {
 			</div>
 		)
 
-		const books = ( 
+		const authors = ( 
 			<div className="row mt-3">
-				{this.props.book.data.map((item, key) => 
+				{this.props.authors.map((item, key) => 
 					<div className="col-md-4" key={item.id}>
 						<div className="card">
 							<div className="card-header">
-								Buku {item.name}
+								Author : {item.first_name} {item.last_name} 
 								<br/>
 								<hr/>
-								<Link to={`/books/${item.id}/edit`} className="btn btn-sm btn-primary">EDIT</Link> &nbsp;
+								<Link to={`/authors/${item.id}/edit`} className="btn btn-sm btn-primary">EDIT</Link> &nbsp;
 								<button onClick={() => this.handleDelete(item.id)} className="btn btn-sm btn-danger">DELETE</button>
 							</div>
 							<div className="card-body">
-								Author {item.author} <br/>
-								Category {item.category}
+								Email : {item.email} <br/>
+								Handphone : {item.handphone}
 							</div>
 						</div>
 						<br/>
@@ -51,10 +50,10 @@ class BookListPage extends Component {
 			<Fragment>
 				<div className="container mt-5">
 
-					<Link to="/books/create" className="btn btn-primary">CREATE NEW BOOK</Link>
+					<Link to="/authors/create" className="btn btn-primary">CREATE NEW AUTHOR</Link>
 					<div className="clearfix"></div>
 
-					{ this.props.book.data.length > 0 ? books : loading }
+					{ this.props.authors.length > 0 ? authors : loading }
 
 				</div>
 			</Fragment>
@@ -63,12 +62,12 @@ class BookListPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	book: state.book
+	authors: state.author.authors
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	getBooks: () => dispatch(getBooksAPI()),
-	deleteBooks: (id) => dispatch(deleteBooksAPI(id))
+	getAuthors: () => dispatch(getAuthorsAPI()),
+	deleteAuthors: (id) => dispatch(deleteAuthorsAPI(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookListPage);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthorListPage);

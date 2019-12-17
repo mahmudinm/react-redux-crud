@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import BookListPage from './pages/Book/BookListPage';
 import BookFormPage from './pages/Book/BookForm/BookFormPage';
+import AuthorListPage from './pages/Author/AuthorListPage';
+import AuthorFormPage from './pages/Author/AuthorForm/AuthorFormPage';
 
 class App extends Component {
   render() {
@@ -22,7 +24,10 @@ class App extends Component {
                   <Link className="nav-link" to="/">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="books">Books</Link>
+                  <Link className="nav-link" to="/books">Books</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/authors">Author</Link>
                 </li>
               </ul>
             </div>
@@ -34,6 +39,9 @@ class App extends Component {
         	<Route exact path="/books" component={BookListPage}/>
           <Route path="/books/create" component={BookFormPage}/>
           <Route path="/books/:id/edit" component={BookFormPage}/>
+          <Route exact path="/authors" component={AuthorListPage}/>
+          <Route path="/authors/create" component={AuthorFormPage}/>
+          <Route path="/authors/:id/edit" component={AuthorFormPage}/>
         </Switch>
       </Router>
     );
