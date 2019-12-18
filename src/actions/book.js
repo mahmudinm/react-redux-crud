@@ -1,4 +1,5 @@
 import instance from '../utils/api';
+import axios, { post } from 'axios';
 
 export const getBooksAPI = (data) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
@@ -32,7 +33,19 @@ export const createBooksAPI = (id) => (dispatch) => {
 
 export const storeBooksAPI = (data) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {
-		instance.post('book', data)
+
+		// (new FormData) Untuk upload file
+		const formData = new FormData()
+		formData.append('image', data.image);
+		formData.append('author_id', data.author_id);
+		formData.append('name', data.name);
+		formData.append('category', data.category);
+
+		instance.post('book', formData, {
+			headers: {
+				'Content-Type': 'mutlipart/form-data'
+			}
+		})
 			.then((res) => {
 				dispatch({type: 'STORE_BOOK', value: data})
 				console.log(res);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { ReduxForm } from '../../../../components/ReduxForm'
+import { renderField } from '../../../../components/renderField'
+import { renderFileField } from '../../../../components/renderFileField'
 import { renderSelectField } from '../../../../components/renderSelectField'
 import { connect } from 'react-redux'
 
@@ -14,6 +15,9 @@ const validate = (values) => {
   }    
   if (!values.category) {
     errors.category = 'Category Required'
+  }    
+  if (!values.image) {
+    errors.image = 'Image Required'
   }    
   return errors
 }  
@@ -38,25 +42,9 @@ class BookForm extends Component {
 						   placeholder="Book Name"
 						   label="Name"
 						   type="input" 
-						   component={ReduxForm} />
+						   component={renderField} />
 				</div>
 				<div className="form-group">
-{/*					<Field name="author" 
-						   placeholder="Book Author"
-						   label="Author"
-						   type="input" 
-						   component={ReduxForm} />*/}
-					{/*<label htmlFor="author_id">Author</label>*/}
-{/*			        <Field 
-			        	name="author_id" 
-			        	id="author_id" 
-			        	component="select"
-			        	className="form-control">
-			    		<option value="">Select Author</option>
-					    {this.props.authors.map((item, key) => 
-				    		<option value={item.id} key={key}>{item.first_name} {item.last_name}</option>
-					    )}
-				    </Field>*/}
 				    <Field
 				    	name="author_id"
 				    	label="Author"
@@ -72,7 +60,14 @@ class BookForm extends Component {
 						   placeholder="Book Category"
 						   label="Category"
 						   type="input" 
-						   component={ReduxForm} />
+						   component={renderField} />
+				</div>
+				<div className="form-group">
+					<Field name="image" 
+						   placeholder="Book Image"
+						   label="Image"
+						   type="file" 
+						   component={renderFileField} />
 				</div>
 				<input type="submit" value={this.props.book.id ? "UPDATE" : "CREATE" } className="btn btn-sm btn-block btn-primary"/>
 			</form>		

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { ReduxForm } from '../../../../components/ReduxForm'
+import { renderField } from '../../../../components/renderField'
 import { connect } from 'react-redux'
 
 const validate = (values) => {
@@ -29,6 +29,7 @@ class AuthorForm extends Component {
 		console.log('author.id', author.id);
 		console.log('this.props', this.props.author.id);
 		if (author.id !== this.props.author.id) {
+			console.log('ok');
 			this.props.initialize(author)
 		}
 	}
@@ -44,7 +45,7 @@ class AuthorForm extends Component {
 								   placeholder="First Name"
 								   label="First Name"
 								   type="input" 
-								   component={ReduxForm} />
+								   component={renderField} />
 						</div>
 					</div>
 					<div className="col-md-6">
@@ -53,7 +54,7 @@ class AuthorForm extends Component {
 								   placeholder="Last Name"
 								   label="Last Name"
 								   type="input" 
-								   component={ReduxForm} />
+								   component={renderField} />
 						</div>
 					</div>
 				</div>
@@ -62,14 +63,14 @@ class AuthorForm extends Component {
 						   placeholder="Email"
 						   label="Email"
 						   type="email" 
-						   component={ReduxForm} />
+						   component={renderField} />
 				</div>
 				<div className="form-group">
 					<Field name="handphone" 
 						   placeholder="Handphone"
 						   label="Handphone"
 						   type="input" 
-						   component={ReduxForm} />
+						   component={renderField} />
 				</div>
 				<input type="submit" value={this.props.author.id ? "UPDATE" : "CREATE" } className="btn btn-sm btn-block btn-primary"/>
 			</form>		
