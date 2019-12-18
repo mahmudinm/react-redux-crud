@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { ReduxForm } from '../../../../components/ReduxForm'
+import { renderSelectField } from '../../../../components/renderSelectField'
 import { connect } from 'react-redux'
 
 const validate = (values) => {
@@ -9,7 +10,7 @@ const validate = (values) => {
     errors.name = 'Name Required'
   }
   if (!values.author_id) {
-    errors.author = 'Author Required'
+    errors.author_id = 'Author Required'
   }    
   if (!values.category) {
     errors.category = 'Category Required'
@@ -45,12 +46,21 @@ class BookForm extends Component {
 						   label="Author"
 						   type="input" 
 						   component={ReduxForm} />*/}
-					<label htmlFor="author_id">Author</label>
-			        <Field 
+					{/*<label htmlFor="author_id">Author</label>*/}
+{/*			        <Field 
 			        	name="author_id" 
 			        	id="author_id" 
 			        	component="select"
 			        	className="form-control">
+			    		<option value="">Select Author</option>
+					    {this.props.authors.map((item, key) => 
+				    		<option value={item.id} key={key}>{item.first_name} {item.last_name}</option>
+					    )}
+				    </Field>*/}
+				    <Field
+				    	name="author_id"
+				    	label="Author"
+				    	component={renderSelectField}>
 			    		<option value="">Select Author</option>
 					    {this.props.authors.map((item, key) => 
 				    		<option value={item.id} key={key}>{item.first_name} {item.last_name}</option>
