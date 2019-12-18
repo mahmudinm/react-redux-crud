@@ -63,6 +63,14 @@ class BookForm extends Component {
 						   component={renderField} />
 				</div>
 				<div className="form-group">
+					{ this.props.book.image ? 
+						<img 
+							src={`http://localhost:8000/image/${this.props.book.image}`} 
+							alt={this.props.book.image}
+							className="img img-rounded"
+							style={{ width: '200px' }} />
+						: ''
+					}	
 					<Field name="image" 
 						   placeholder="Book Image"
 						   label="Image"

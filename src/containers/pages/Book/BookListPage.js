@@ -28,8 +28,11 @@ class BookListPage extends Component {
 					<div className="col-md-4" key={item.id}>
 						<div className="card">
 							<div className="card-header">
-								Buku {item.name}
-								<br/>
+								<p>Buku : {item.name}</p>
+								{ item.image ? 
+									<img src={`http://localhost:8000/image/${item.image}`} style={{ width: '100px', height: 'auto' }}/>
+									: ''
+								 }
 								<hr/>
 								<Link to={`/books/${item.id}/edit`} className="btn btn-sm btn-primary">EDIT</Link> &nbsp;
 								<button onClick={() => this.handleDelete(item.id)} className="btn btn-sm btn-danger">DELETE</button>
