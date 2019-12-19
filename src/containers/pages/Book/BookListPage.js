@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getBooksAPI, deleteBooksAPI } from '../../../actions/book'
+import BookList from './BookList'
 
 class BookListPage extends Component {
 
@@ -47,6 +48,10 @@ class BookListPage extends Component {
 				)}
 			</div>				
 		)
+
+		const Table = (
+			<BookList books={this.props.books} />
+		)
 	
 
 		return(
@@ -56,7 +61,8 @@ class BookListPage extends Component {
 					<Link to="/books/create" className="btn btn-primary">CREATE NEW BOOK</Link>
 					<div className="clearfix"></div>
 
-					{ this.props.books.length > 0 ? books : loading }
+					{/*{ this.props.books.length > 0 ? books : loading }*/}
+					{ this.props.books.length > 0 ? Table : loading }
 
 				</div>
 			</Fragment>
