@@ -10,9 +10,9 @@ class AuthorListPage extends Component {
 		this.props.getAuthors()
 	}
 
-	handleDelete = (id) => {
-		console.log(id)
-		this.props.deleteAuthors(id)
+	handleDelete = (data) => {
+		console.log(data.original.id)
+		this.props.deleteAuthors(data.original.id)
 	}
 
 	render() {
@@ -23,33 +23,9 @@ class AuthorListPage extends Component {
 			</div>
 		)
 
-		const authors = ( 
-			<div className="row mt-3">
-				{this.props.authors.map((item, key) => 
-					<div className="col-md-4" key={item.id}>
-						<div className="card">
-							<div className="card-header">
-								Author : {item.first_name} {item.last_name} 
-								<br/>
-								<hr/>
-								<Link to={`/authors/${item.id}/edit`} className="btn btn-sm btn-primary">EDIT</Link> &nbsp;
-								<button onClick={() => this.handleDelete(item.id)} className="btn btn-sm btn-danger">DELETE</button>
-							</div>
-							<div className="card-body">
-								Email : {item.email} <br/>
-								Handphone : {item.handphone}
-							</div>
-						</div>
-						<br/>
-					</div>
-				)}
-			</div>				
-		)
-
 		const Table = (
 			<AuthorList authors={this.props.authors} onClick={this.handleDelete} />
 		)
-	
 
 		return(
 			<Fragment>

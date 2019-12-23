@@ -1,5 +1,4 @@
 import instance from '../utils/api';
-import axios, { post } from 'axios';
 
 export const getBooksAPI = (data) => (dispatch) => {
 	const promise = new Promise((resolve, reject) => {

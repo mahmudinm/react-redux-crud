@@ -3,7 +3,6 @@ import { Field, reduxForm } from 'redux-form'
 import { renderField } from '../../../../components/renderField'
 import { renderFileField } from '../../../../components/renderFileField'
 import { renderSelectField } from '../../../../components/renderSelectField'
-import { connect } from 'react-redux'
 
 const validate = (values) => {
   const errors = {}

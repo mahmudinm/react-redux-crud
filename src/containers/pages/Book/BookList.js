@@ -28,7 +28,7 @@ export default function BookList({ books, onClick }) {
 				)
 			}
 		],
-		[]
+		[onClick]
 	)
 
 	return (

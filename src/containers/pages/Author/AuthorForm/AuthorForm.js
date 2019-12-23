@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { renderField } from '../../../../components/renderField'
-import { connect } from 'react-redux'
 
 const validate = (values) => {
   const errors = {}

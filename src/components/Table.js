@@ -88,6 +88,7 @@ export default function Table ({ columns, data })  {
 	    prepareRow,
 	    page, // Instead of using 'rows', we'll use page,
 	    // which has only the rows for the active page
+	    // rows,
 
 	    // Pagination Props
 	    // The rest of these things are super handy, too ;)
@@ -122,6 +123,11 @@ export default function Table ({ columns, data })  {
     // Render the UI for your table
 	return (
 	    <React.Fragment>
+          {/*<GlobalFilter
+            preGlobalFilteredRows={preGlobalFilteredRows}
+            globalFilter={globalFilter}
+            setGlobalFilter={setGlobalFilter}
+          />	    */}
 	      <table {...getTableProps()} className="table mt-4 mb-3">
 	        <thead>
 	          {headerGroups.map(headerGroup => (

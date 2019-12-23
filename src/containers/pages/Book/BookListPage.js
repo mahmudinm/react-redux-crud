@@ -22,32 +22,6 @@ class BookListPage extends Component {
 			</div>
 		)
 
-		const books = ( 
-			<div className="row mt-3">
-				{this.props.books.map((item, key) => 
-					<div className="col-md-4" key={item.id}>
-						<div className="card">
-							<div className="card-header">
-								<p>Buku : {item.name}</p>
-								{ item.image ? 
-									<img src={`http://localhost:8000/image/${item.image}`} style={{ width: '100px', height: 'auto' }}/>
-									: ''
-								 }
-								<hr/>
-								<Link to={`/books/${item.id}/edit`} className="btn btn-sm btn-primary">EDIT</Link> &nbsp;
-								<button onClick={() => this.handleDelete(item.id)} className="btn btn-sm btn-danger">DELETE</button>
-							</div>
-							<div className="card-body">
-								Author : {item.author.first_name} <br/>
-								Category : {item.category}
-							</div>
-						</div>
-						<br/>
-					</div>
-				)}
-			</div>				
-		)
-
 		const Table = (
 			<BookList books={this.props.books} onClick={this.handleDelete} />
 		)

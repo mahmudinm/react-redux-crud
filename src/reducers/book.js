@@ -30,7 +30,7 @@ const book = (state = initialState, action = {}) => {
 				authors: action.authors
 			}
 		case 'UPDATE_BOOK':
-			const book = action.value
+			// const book = action.value
 			return {
 				...state,
 				// tidak bisa di gunakan ketika ada relasi data /
