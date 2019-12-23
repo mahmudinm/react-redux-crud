@@ -1,9 +1,10 @@
 import React from 'react'
 import Table from '../../../components/Table'
+import { Link } from 'react-router-dom'
 
-export default function BookList({ books }) {
+export default function BookList({ books, onClick }) {
 	const columns = React.useMemo(
-		() => [
+		() => [	
 			{
 				Header: 'Name',
 				accessor: 'name'
@@ -15,6 +16,16 @@ export default function BookList({ books }) {
 			{
 				Header: 'Category',
 				accessor: 'category'
+			},
+			{
+				Header: 'Action',
+				disableFilters: true,
+				Cell: ({row}) => (
+					<div>
+		               <Link to={`/books/${row.original.id}/edit`}>Edit</Link>
+		               <button onClick={() => onClick(row)}>Delete</button>
+					</div>
+				)
 			}
 		],
 		[]

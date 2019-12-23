@@ -16,9 +16,9 @@ const validate = (values) => {
   if (!values.category) {
     errors.category = 'Category Required'
   }    
-  if (!values.image) {
-    errors.image = 'Image Required'
-  }    
+  // if (!values.image) {
+  //   errors.image = 'Image Required'
+  // }    
   return errors
 }  
 

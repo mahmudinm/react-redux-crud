@@ -10,9 +10,11 @@ class BookListPage extends Component {
 		this.props.getBooks()
 	}
 
-	handleDelete = (id) => {
-		console.log(id)
-		this.props.deleteBooks(id)
+	// handleDelete = (id) => {
+	handleDelete = (data) => {
+		// console.log(data.original.id);
+		// console.log(id)
+		this.props.deleteBooks(data.original.id)
 	}
 
 	render() {
@@ -50,9 +52,8 @@ class BookListPage extends Component {
 		)
 
 		const Table = (
-			<BookList books={this.props.books} />
+			<BookList books={this.props.books} onClick={this.handleDelete} />
 		)
-	
 
 		return(
 			<Fragment>
