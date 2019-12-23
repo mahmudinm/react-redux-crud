@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getAuthorsAPI, deleteAuthorsAPI } from '../../../actions/author'
+import AuthorList from './AuthorList'
 
 class AuthorListPage extends Component {
 
@@ -44,6 +45,10 @@ class AuthorListPage extends Component {
 				)}
 			</div>				
 		)
+
+		const Table = (
+			<AuthorList authors={this.props.authors} onClick={this.handleDelete} />
+		)
 	
 
 		return(
@@ -53,7 +58,8 @@ class AuthorListPage extends Component {
 					<Link to="/authors/create" className="btn btn-primary">CREATE NEW AUTHOR</Link>
 					<div className="clearfix"></div>
 
-					{ this.props.authors.length > 0 ? authors : loading }
+					{/*{ this.props.authors.length > 0 ? authors : loading }*/}
+					{ this.props.authors.length > 0 ? Table : loading }
 
 				</div>
 			</Fragment>
