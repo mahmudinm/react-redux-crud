@@ -10,10 +10,7 @@ class BookListPage extends Component {
 		this.props.getBooks()
 	}
 
-	// handleDelete = (id) => {
 	handleDelete = (data) => {
-		// console.log(data.original.id);
-		// console.log(id)
 		this.props.deleteBooks(data.original.id)
 	}
 
@@ -62,7 +59,6 @@ class BookListPage extends Component {
 					<Link to="/books/create" className="btn btn-primary">CREATE NEW BOOK</Link>
 					<div className="clearfix"></div>
 
-					{/*{ this.props.books.length > 0 ? books : loading }*/}
 					{ this.props.books.length > 0 ? Table : loading }
 
 				</div>

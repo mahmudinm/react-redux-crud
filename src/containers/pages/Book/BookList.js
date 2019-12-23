@@ -22,8 +22,8 @@ export default function BookList({ books, onClick }) {
 				disableFilters: true,
 				Cell: ({row}) => (
 					<div>
-		               <Link to={`/books/${row.original.id}/edit`}>Edit</Link>
-		               <button onClick={() => onClick(row)}>Delete</button>
+		               <Link to={`/books/${row.original.id}/edit`} className="btn btn-sm btn-primary">Edit</Link>&nbsp;
+		               <button onClick={() => onClick(row)} className="btn btn-sm btn-danger">Delete</button>
 					</div>
 				)
 			}

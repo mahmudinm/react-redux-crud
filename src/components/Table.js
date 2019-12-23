@@ -33,6 +33,7 @@ function DefaultColumnFilter({
   return (
     <input
       value={filterValue || ''}
+      className="form-control"
       onChange={e => {
         setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
       }}
@@ -126,7 +127,7 @@ export default function Table ({ columns, data })  {
 	          {headerGroups.map(headerGroup => (
 	            <tr {...headerGroup.getHeaderGroupProps()}>
 	              {headerGroup.headers.map(column => (
-	                <th {...column.getHeaderProps()}>
+	                <th {...column.getHeaderProps()} style={{ verticalAlign: 'middle' }}>
 	                	{column.render('Header')}
 	                    <div>{column.canFilter ? column.render('Filter') : null}</div>
 	                </th>
