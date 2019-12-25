@@ -19,4 +19,5 @@ React Redux CRUD with upload image and relational data with redux-form, react-ta
 - redux-form
 - redux-thunk
 
-
+# Screenshot
+![Halaman Author] (https://github.com/mahmudinm/react-redux-crud/raw/master/SCREENSHOT/halaman_authors.png)
