@@ -4,8 +4,8 @@ React Redux CRUD with upload image and relational data with redux-form, react-ta
 
 # Install
 
-npm install / yarn install 
-npm start / yarn start
+- npm install / yarn install 
+- npm start / yarn start
 
 # Package Used
 - react-router-dom
