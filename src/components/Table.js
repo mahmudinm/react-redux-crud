@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTable, usePagination, useGlobalFilter, useFilters } from 'react-table'
+import { useTable, useGlobalFilter, usePagination,  useFilters } from 'react-table'
 import matchSorter from 'match-sorter'
 
 // Define a default UI for filtering
@@ -11,16 +11,19 @@ function GlobalFilter({
   const count = preGlobalFilteredRows.length
 
   return (
-    <span>
-      Search:{' '}
-      <input
-        value={globalFilter || ''}
-        onChange={e => {
-          setGlobalFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
-        }}
-        placeholder={`${count} records...`}
-      />
-    </span>
+    <div className="form-group row">
+      <label className="col-sm-2 col-form-label">Search</label>
+      <div className="col-sm-10">
+	      <input
+	        value={globalFilter || ''}
+	        onChange={e => {
+	          setGlobalFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
+	        }}
+	        className="form-control"
+	        placeholder={`${count} records...`}
+	      />
+      </div>
+    </div>	    
   )
 }
 
@@ -88,7 +91,7 @@ export default function Table ({ columns, data })  {
 	    prepareRow,
 	    page, // Instead of using 'rows', we'll use page,
 	    // which has only the rows for the active page
-	    // rows,
+	    rows,
 
 	    // Pagination Props
 	    // The rest of these things are super handy, too ;)
@@ -112,22 +115,24 @@ export default function Table ({ columns, data })  {
 			data,
 			initialState: { pageindex: 2 },	
 			defaultColumn,
-			filterTypes,
+			// filterTypes,
 		},
 		useFilters,
-		usePagination,
-		useGlobalFilter
+		useGlobalFilter,
+		usePagination
 	)
 
 
     // Render the UI for your table
 	return (
 	    <React.Fragment>
-          {/*<GlobalFilter
-            preGlobalFilteredRows={preGlobalFilteredRows}
-            globalFilter={globalFilter}
-            setGlobalFilter={setGlobalFilter}
-          />	    */}
+	      <div className="float-right">
+          	<GlobalFilter
+           		preGlobalFilteredRows={preGlobalFilteredRows}
+            	globalFilter={globalFilter}
+            	setGlobalFilter={setGlobalFilter}
+          	/>
+	      </div>
 	      <table {...getTableProps()} className="table mt-4 mb-3">
 	        <thead>
 	          {headerGroups.map(headerGroup => (
